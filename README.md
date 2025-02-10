@@ -25,21 +25,13 @@ Roller のインストール
 この方法は本番環境での運用には推奨されませんが、Roller を試してみるには比較的簡単な方法です。
 UNIX シェル、Java、Maven、Git が揃っている場合:
 
-コードを取得する:
-
-bash
-コピーする
 $ git clone https://github.com/apache/roller.git
 Roller をコンパイル・ビルドする:
 
-bash
-コピーする
 $ cd roller
 $ mvn -DskipTests=true install
 埋め込みの Derby データベースを使用して Jetty 上で Roller を実行する（テスト用）:
 
-bash
-コピーする
 $ mvn jetty:run
 Jetty が起動したら、ブラウザで http://localhost:8080/roller にアクセスして Roller を試してください。
 
@@ -48,10 +40,6 @@ Jetty が起動したら、ブラウザで http://localhost:8080/roller にア�
 この方法は Maven や Java が不要なため、Maven 経由で実行するよりも簡単です。
 Docker が用意できている場合、以下の手順でデモ目的で Roller を実行できます。
 
-コードを取得する:
-
-bash
-コピーする
 $ git clone https://github.com/apache/roller.git
 Docker Compose を実行して、PostgreSQL データベースとともに Roller をビルド・起動する:
 
