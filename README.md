@@ -1,72 +1,63 @@
+Apache Roller は、Java ベースのフル機能を備えたマルチユーザーおよびグループブログサーバであり、小規模から大規模なブログサイトに適しています。
+Roller は通常、Apache Tomcat と MySQL を使用して実行されます。
+Roller は次の Maven プロジェクトで構成されています:
 
-# Apache Roller
+roller-project: トップレベルプロジェクト
+app: Roller Weblogger のウェブアプリケーション、JSP ページ、Velocity テンプレート
+assembly-release: Roller の公式ディストリビューションを作成するために使用
+docs: ASCII Doc 形式の Roller ドキュメント
+it-selenium: Selenium を使用した Roller の統合ブラウザテスト
+ドキュメント
+Roller のインストール、ユーザー、およびテンプレートガイドは、ODT 形式（OpenOffice や LibreOffice 用）で利用できます:
 
-[Apache Roller](http://roller.apache.org) is a Java-based, full-featured, multi-user and group-blog server suitable for blog sites large and small.
-Roller is typically run with Apache Tomcat and MySQL.
-Roller is made up of the following Maven projects:
+https://github.com/apache/roller/tree/master/docs
+詳細情報
+Roller Confluence Wiki をご覧ください:
 
-* _roller-project_:         Top level project
-* _app_:                    Roller Weblogger webapp, JSP pages, Velocity templates
-* _assembly-release_:       Used to create official distributions of Roller
-* _docs_:                   Roller documentation in ASCII Doc format
-* _it-selenium_:            Integrated browser tests for Roller using Selenium
+Roller のビルドと実行方法: https://cwiki.apache.org/confluence/x/EM4
+Roller への貢献方法: https://cwiki.apache.org/confluence/x/2hsB
+Roller のリリース方法: https://cwiki.apache.org/confluence/x/gycB
+その他の開発者向けリソース: https://cwiki.apache.org/confluence/x/D84
+Roller のインストール
+本番環境で Roller を実行する場合は、最新の公式リリースをダウンロードし、インストールガイドに従ってインストールしてください。インストールガイドは以下のドキュメントリンクで確認できます: https://github.com/apache/roller/tree/master/docs.
 
-## Documentation
+クイックスタート: Maven 経由での実行
+この方法は本番環境での運用には推奨されませんが、Roller を試してみるには比較的簡単な方法です。
+UNIX シェル、Java、Maven、Git が揃っている場合:
 
-The Roller Install, User and Template Guides are available in ODT format (for OpenOffice or LibraOffice):
+コードを取得する:
 
-* <https://github.com/apache/roller/tree/master/docs>
+bash
+コピーする
+$ git clone https://github.com/apache/roller.git
+Roller をコンパイル・ビルドする:
 
-## For more information
+bash
+コピーする
+$ cd roller
+$ mvn -DskipTests=true install
+埋め込みの Derby データベースを使用して Jetty 上で Roller を実行する（テスト用）:
 
-Hit the Roller Confluence wiki:
+bash
+コピーする
+$ mvn jetty:run
+Jetty が起動したら、ブラウザで http://localhost:8080/roller にアクセスして Roller を試してください。
 
-* How to build and run Roller: <https://cwiki.apache.org/confluence/x/EM4>
-* How to contribute to Roller: <https://cwiki.apache.org/confluence/x/2hsB>
-* How to make a release of Roller: <https://cwiki.apache.org/confluence/x/gycB>
-* Other developer resources: <https://cwiki.apache.org/confluence/x/D84>
+クイックスタート: Docker 経由での実行
+もう一つの Roller を試す方法は Docker を使用する方法です。
+この方法は Maven や Java が不要なため、Maven 経由で実行するよりも簡単です。
+Docker が用意できている場合、以下の手順でデモ目的で Roller を実行できます。
 
+コードを取得する:
 
-## Installing Roller 
+bash
+コピーする
+$ git clone https://github.com/apache/roller.git
+Docker Compose を実行して、PostgreSQL データベースとともに Roller をビルド・起動する:
 
-If you want to run Roller in production, then you should down load the latest official release and install it by following the Installation Guide, which you can find at the documentation link: <https://github.com/apache/roller/tree/master/docs>.
-
-
-## Quick start: Running via Maven
-
-You probably should not run Roller in production using this technique, but it's a relatively easy way to try Roller for yourself. 
-Assuming you've got a UNIX shell, Java, Maven and Git:
-
-Get the code:
-
-    $ git clone https://github.com/apache/roller.git
-
-Compile and build Roller:
-
-    $ cd roller
-    $ mvn -DskipTests=true install
-
-Run Roller in Jetty with an embedded Derby database (for testing only):
-
-    $ mvn jetty:run
-
-Once Jetty is up and running browse to <http://localhost:8080/roller> to try to Roller.
-
-
-## Quick start: running via Docker
-
-Another way to try Roller is to use Docker. 
-This is actually easier than running via Maven because you do not need Maven or Java. 
-If you've got Docker, here's how you can run Roller for demo purposes.
-
-Get the code:
-
-    $ git clone https://github.com/apache/roller.git
-
-Run Docker Compose to build and launch Roller along with a PostgreSQL database:
-
-    $ cd roller
-    $ docker-compose up
-    
-It will take a while to build and start the Docker image. 
-Once it's done browse to <http://localhost:8080/roller> to try Roller.
+bash
+コピーする
+$ cd roller
+$ docker-compose up
+Docker イメージのビルドと起動にはしばらく時間がかかります。
+完了したら、ブラウザで http://localhost:8080/roller にアクセスして Roller を試してください。
