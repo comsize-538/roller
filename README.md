@@ -1,7 +1,3 @@
-以下は日本語訳です。
-
----
-
 # Apache Roller
 
 [Apache Roller](http://roller.apache.org) は、Java ベースのフル機能を備えたマルチユーザーおよびグループブログサーバであり、小規模から大規模なブログサイトに適しています。  
